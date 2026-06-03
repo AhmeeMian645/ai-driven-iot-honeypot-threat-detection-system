@@ -1,0 +1,34 @@
+{
+    "broker_host": "mqtt-broker",
+    "broker_port": 1883,
+    "devices": [
+        {
+            "type": "temperature",
+            "publish_frequency": 5,
+            "publish_topic": "devices/temp",
+            "std_val": 25,
+            "device_count": 2
+        },
+        {
+            "type": "humidity",
+            "publish_frequency": 7,
+            "publish_topic": "devices/hum",
+            "std_val": 40,
+            "device_count": 2
+        },
+        {
+            "type": "bulb",
+            "publish_frequency": 3,
+            "publish_topic": "devices/bulb",
+            "std_val": 1,
+            "device_count": 2
+        },
+        {
+            "type": "camera",
+            "publish_frequency": 6,
+            "publish_topic": "devices/cam",
+            "std_val": 1,
+            "device_count": 1
+        }
+    ]
+}
