@@ -90,7 +90,8 @@ Muhammad Ahmad
 
 BS Information Technology
 
-Government Graduate College Samnabad Faisalabad
+Government College University Faisalabad
+Government Graduate College Samanabad, Faisalabad (affiliated)
 
 GitHub:
 https://github.com/AhmeeMian645
