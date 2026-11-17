@@ -1,0 +1,4 @@
+alert icmp any any -> any any (msg:"ICMP_Detected"; sid:100001; rev:1;)
+alert tcp any any -> any ![1883] (flags:S; threshold:type both, track by_src, count 15, seconds 5; msg:"Port Scan"; sid:100002; rev:2;)
+alert tcp any any -> any 2222 (flags:S; threshold:type both,track by_src, count 5, seconds 20; msg:"SSH Brute FOrce"; sid:100003; rev:1;)
+alert tcp any any -> any 1883 (threshold: type both, track by_src, count 10,seconds 10; msg:"MQTT Abuse"; sid: 100004; rev:1;)

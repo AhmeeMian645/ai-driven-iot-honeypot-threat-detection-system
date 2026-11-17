@@ -1,0 +1,71 @@
+<!-- Local rules -->
+
+<!-- Modify it at your will. -->
+<!-- Copyright (C) 2015, Wazuh Inc. -->
+
+<!-- Example -->
+<group name="local,syslog,sshd,">
+
+  <!--
+  Dec 10 01:02:02 host sshd[1234]: Failed none for root from 1.1.1.1 port 1066 ssh2
+  -->
+  <rule id="100001" level="5">
+    <if_sid>5716</if_sid>
+    <srcip>1.1.1.1</srcip>
+    <description>sshd: authentication failed from IP 1.1.1.1.</description>
+    <group>authentication_failed,pci_dss_10.2.4,pci_dss_10.2.5,</group>
+  </rule>
+
+</group>
+
+
+<group name="local,iot_honeypot,suricata,">
+   <rule id="100002" level="5">
+   <if_sid> 86601</if_sid>
+   <field name="alert.signature" type="pcre2">(?i)^port scan$</field>
+   <description>IOT honeypot: Port Scan Detected from $(src_ip)</description>
+   <mitre>
+     <id>T1046</id>
+   </mitre>
+   <group>iot_honeypot,port_scan,</group>
+   </rule>
+
+
+   <rule id="100003" level="8">
+     <if_sid>86601</if_sid>
+     <field name="alert.signature" type="pcre2">(?i)^SSH Brute FOrce$</field>
+     <description>IOT Honeypot: SSh BRUTE Force Against this IP $(src_ip)</description>
+     <mitre>
+       <id>T1110.001</id>
+     </mitre>
+     <group>SSH_Brute_force,Suricata</group>
+  </rule>
+
+  <rule id="100004" level="8">
+    <if_sid>86601</if_sid>
+    <field name="alert.signature" type="pcre2">(?i)^MQTT Abuse$</field>
+    <description>IOT honeypot: Abuse of MQTT Broker by $(src_ip)</description>
+    <mitre>
+      <id>T1499.002</id>
+    </mitre>
+    <group>Suricata,mqtt_flood,</group>
+  </rule>
+</group>
+  
+
+<group name="ai_honeypot,">
+  <rule id="100501" level="10">
+    <decoded_as>json</decoded_as>
+    <field name="event_type">^ai_classification$</field>
+    <description>AI Honeypot Threat Detected: $(predicted_attack) with $(confidence)% confidence from $(source_ip) on port $(destination_port)</description>
+    <group>ai_detection,threat_intel,</group>
+  </rule>
+</group>
+
+
+
+
+
+
+
+

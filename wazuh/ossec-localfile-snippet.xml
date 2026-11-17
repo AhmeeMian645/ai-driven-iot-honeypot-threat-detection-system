@@ -1,0 +1,11 @@
+<!-- Add these two blocks inside <ossec_config> in /var/ossec/etc/ossec.conf on the wazuh manager side and Then restart wazuh-manager
+<localfile>
+  <log_format>json</log_format>
+  <location>/var/log/suricata/eve.json</location>
+</localfile>
+
+
+<localfile>
+  <log_format>json</log_format>
+  <location>/var/log/ai_honeypot.log</location>
+</localfile>
