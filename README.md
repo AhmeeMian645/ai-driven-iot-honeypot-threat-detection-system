@@ -167,5 +167,7 @@ Parts of the Python code (the model pipeline and the live detector) were written
 
 ## Author
 **Muhammad Ahmad**, BS Information Technology
+
 Government College University Faisalabad (Government Graduate College Samanabad, Faisalabad, affiliated)
+
 GitHub: https://github.com/AhmeeMian645
